@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  auto_restart_modem_by_telnet:
+    env_file:
+      - .env
+    image: auto_restart_modem
+    build: .
+    container_name: auto_restart_modem
+    restart: unless-stopped
+    network_mode: host
+    command: python3 check_network.py
